@@ -11,6 +11,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.net.URISyntaxException;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import static com.cc.meepo.SymbolConstant.namesMap;
@@ -18,7 +19,7 @@ import static com.cc.meepo.SymbolConstant.namesMap;
 @Service
 public class Chaoex {
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
 
     public void go(String symbol, String url) throws URISyntaxException {
@@ -54,8 +55,11 @@ public class Chaoex {
                 @Override
                 public void call(Object... objects) {
                     String key = symbol + "->" + url;
-                    System.out.println(objects[0].toString());
+                    System.out.println(key + "->" + objects[0].toString());
+
+
                     redisTemplate.opsForValue().set(key, objects[0].toString(), 1, TimeUnit.DAYS);
+                    test(key);
 
                 }
             });
@@ -64,4 +68,23 @@ public class Chaoex {
 
 
     }
+
+    public void test(String key) {
+        String k = key;
+        if (key.contains("ABF")) {
+            k = key.replace("ABF", "CODE");
+
+        } else if (key.contains("CODE")) {
+            k = key.replace("CODE", "ABF");
+        }
+        Set<String> keys = redisTemplate.keys("*" + k.split("->")[0] + "*");
+        for (String kk : keys) {
+            String json= (String) redisTemplate.opsForValue().get(kk);
+            System.out.println(kk+"->"+json);
+        }
+
+
+    }
+
+
 }
