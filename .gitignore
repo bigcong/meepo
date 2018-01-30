@@ -90,3 +90,19 @@ fabric.properties
 
 .idea
 *.iml
+.gitignore
+.gradle/
+.idea/compiler.xml
+.idea/gradle.xml
+.idea/inspectionProfiles/
+.idea/libraries/
+.idea/modules/
+build.gradle
+build/
+gradle/
+gradlew
+gradlew.bat
+meepo.iml
+src/main/java/com/cc/meepo/MeepoApplication.java
+src/main/resources/
+src/test/

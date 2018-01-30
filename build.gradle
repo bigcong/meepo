@@ -28,6 +28,7 @@ dependencies {
 	compile "io.socket:socket.io-client:1.0.0"
 	compile group: 'com.corundumstudio.socketio', name: 'netty-socketio', version: '1.7.13'
 	compile 'com.google.code.gson:gson:2.3.1'
+	compile 'org.springframework.boot:spring-boot-starter-data-redis'
 	compile('org.springframework.boot:spring-boot-starter')
 
 
