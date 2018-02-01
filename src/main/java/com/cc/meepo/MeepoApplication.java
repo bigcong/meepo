@@ -1,5 +1,6 @@
 package com.cc.meepo;
 
+import com.cc.meepo.exchange.Exx;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -31,7 +32,7 @@ public class MeepoApplication {
 
     public static void main(String[] args) throws Exception {
         ConfigurableApplicationContext run = SpringApplication.run(MeepoApplication.class, args);
-        Chaoex chaoex = (Chaoex) run.getBean("chaoex");
+     /*   Chaoex chaoex = (Chaoex) run.getBean("chaoex");
         for (String symbol : chaoexList) {
             chaoex.go(symbol, "https://www.chaoex.com");
 
@@ -40,6 +41,13 @@ public class MeepoApplication {
             chaoex.go(symbol, "http://www.nb.top");
 
         }
+
+
+
+*/
+        Exx exx = (Exx) run.getBean("exx");
+        exx.markets();
+
 
 
     }
