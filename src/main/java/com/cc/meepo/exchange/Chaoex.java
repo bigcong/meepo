@@ -1,4 +1,4 @@
-package com.cc.meepo;
+package com.cc.meepo.exchange;
 
 import com.cc.meepo.model.Order;
 import com.google.gson.Gson;
